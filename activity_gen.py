@@ -80,7 +80,8 @@ def active_week_summary(rows: Iterable[dict[str, str]]) -> tuple[int, int]:
 
     ordered = sorted(weeks)
     longest = current = 1
-    previous_monday = date.fromisocalendar(*ordered[0], 1)
+    first_year, first_week = ordered[0]
+    previous_monday = date.fromisocalendar(first_year, first_week, 1)
     for year, week in ordered[1:]:
         monday = date.fromisocalendar(year, week, 1)
         if monday - previous_monday == timedelta(days=7):
