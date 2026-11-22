@@ -37,7 +37,7 @@ python3 activity_gen.py list
 python3 activity_gen.py stats
 ```
 
-Use `--help` to see all available commands.
+Use `--help` to see all available commands. The `stats` command also reports active ISO weeks and the longest consecutive active-week run based on your real local log entries.
 
 ## Example
 
@@ -63,6 +63,8 @@ activity-gen/
 ├── .gitignore
 └── README.md
 ```
+
+See [CONTRIBUTION_ROADMAP.md](CONTRIBUTION_ROADMAP.md) for the 9-month plan and weekly review checklist.
 
 ## GitHub contributions
 
