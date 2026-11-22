@@ -4,7 +4,7 @@ import unittest
 from datetime import datetime
 from pathlib import Path
 
-from activity_gen import read_activities, record_activity
+from activity_gen import active_week_summary, read_activities, record_activity
 
 
 class ActivityGenTests(unittest.TestCase):
@@ -50,6 +50,19 @@ class ActivityGenTests(unittest.TestCase):
             rows = list(csv.reader(handle))
         self.assertEqual(rows[0], ["date", "time", "project", "task", "outcome"])
         self.assertEqual(len(rows), 3)
+
+    def test_counts_consecutive_iso_weeks(self):
+        rows = [
+            {"date": "2026-11-02"},
+            {"date": "2026-11-04"},
+            {"date": "2026-11-09"},
+            {"date": "2026-11-16"},
+            {"date": "2026-12-01"},
+        ]
+        self.assertEqual(active_week_summary(rows), (4, 3))
+
+    def test_empty_week_summary(self):
+        self.assertEqual(active_week_summary([]), (0, 0))
 
 
 if __name__ == "__main__":
