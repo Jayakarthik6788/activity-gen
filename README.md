@@ -1,182 +1,81 @@
-Contribution: 2025-06-23 20:00
+# activity-gen
 
-Contribution: 2025-06-24 20:00
+A lightweight Python command-line tool for recording **real project work** in a dated activity log.
 
-Contribution: 2025-06-25 20:00
+This repository previously contained only a list of contribution dates. A date list does not demonstrate what was built, and it cannot verify that work took place. This version replaces that list with a usable tracker. It does not generate fake GitHub commits, backdate activity, or manufacture contribution streaks.
 
-Contribution: 2025-06-27 20:00
+## What it does
 
-Contribution: 2025-06-28 20:00
+- Records the local date and time when you log work.
+- Captures the project, task completed, and outcome.
+- Stores entries in a local CSV file.
+- Lists previous entries and summarizes the number of logged work days.
+- Uses only the Python standard library.
 
-Contribution: 2025-06-29 20:00
+## Requirements
 
-Contribution: 2025-06-30 20:00
+- Python 3.9+
+- No external packages
 
-Contribution: 2025-07-03 20:00
+## Quick start
 
-Contribution: 2025-07-04 20:00
+Clone or download this repository, then run these commands from the project folder.
 
-Contribution: 2025-07-18 20:00
+**Windows (PowerShell):**
 
-Contribution: 2025-07-19 20:00
+```powershell
+py activity_gen.py add --project "activity-gen" --task "Implemented the activity logger" --outcome "The CLI now saves dated work records"
+py activity_gen.py list
+py activity_gen.py stats
+```
 
-Contribution: 2025-07-22 20:00
+**macOS / Linux:**
 
-Contribution: 2025-07-24 20:00
+```bash
+python3 activity_gen.py add --project "activity-gen" --task "Implemented the activity logger" --outcome "The CLI now saves dated work records"
+python3 activity_gen.py list
+python3 activity_gen.py stats
+```
 
-Contribution: 2025-07-31 20:00
+Use `--help` to see all available commands.
 
-Contribution: 2025-08-01 20:00
+## Example
 
-Contribution: 2025-08-02 20:00
+```text
+$ py activity_gen.py add --project "My project" --task "Fixed CSV validation" --outcome "Invalid rows are now rejected"
+Logged work for 2026-11-23.
+Saved to activity_log.csv.
+```
 
-Contribution: 2025-08-03 20:00
+The displayed date is taken from your computer's local clock at the time the entry is created. The program intentionally has no option to backdate entries.
 
-Contribution: 2025-08-07 20:00
+## Project structure
 
-Contribution: 2025-08-08 20:00
+```text
+activity-gen/
+├── activity_gen.py
+├── activity_log.csv
+├── tests/
+│   └── test_activity_gen.py
+├── .github/
+│   └── workflows/
+│       └── tests.yml
+├── .gitignore
+└── README.md
+```
 
-Contribution: 2025-08-14 20:00
+## GitHub contributions
 
-Contribution: 2025-08-17 20:00
+Logging an entry changes the local CSV file; it does not itself create a GitHub contribution. To publish genuine work, review your changes and commit them with Git:
 
-Contribution: 2025-09-01 20:00
+```bash
+git add activity_gen.py activity_log.csv
+git commit -m "Log completed project work"
+git push
+```
 
-Contribution: 2025-09-07 20:00
+Only commit work you actually completed. GitHub applies its own rules for which commits count toward the contribution graph.
 
-Contribution: 2025-09-18 20:00
+## License
 
-Contribution: 2025-09-20 20:00
-
-Contribution: 2025-09-21 20:00
-
-Contribution: 2025-09-23 20:00
-
-Contribution: 2025-09-26 20:00
-
-Contribution: 2025-10-01 20:00
-
-Contribution: 2025-10-08 20:00
-
-Contribution: 2025-10-09 20:00
-
-Contribution: 2025-10-14 20:00
-
-Contribution: 2025-10-15 20:00
-
-Contribution: 2025-10-18 20:00
-
-Contribution: 2025-10-19 20:00
-
-Contribution: 2025-11-06 20:00
-
-Contribution: 2025-11-09 20:00
-
-Contribution: 2025-11-11 20:00
-
-Contribution: 2025-11-14 20:00
-
-Contribution: 2025-11-23 20:00
-
-Contribution: 2025-11-25 20:00
-
-Contribution: 2025-11-26 20:00
-
-Contribution: 2025-12-03 20:00
-
-Contribution: 2025-12-04 20:00
-
-Contribution: 2025-12-05 20:00
-
-Contribution: 2025-12-07 20:00
-
-Contribution: 2025-12-11 20:00
-
-Contribution: 2025-12-13 20:00
-
-Contribution: 2025-12-25 20:00
-
-Contribution: 2026-01-02 20:00
-
-Contribution: 2026-01-04 20:00
-
-Contribution: 2026-01-09 20:00
-
-Contribution: 2026-01-12 20:00
-
-Contribution: 2026-01-20 20:00
-
-Contribution: 2026-01-28 20:00
-
-Contribution: 2026-01-30 20:00
-
-Contribution: 2026-02-03 20:00
-
-Contribution: 2026-02-04 20:00
-
-Contribution: 2026-02-13 20:00
-
-Contribution: 2026-02-15 20:00
-
-Contribution: 2026-02-18 20:00
-
-Contribution: 2026-02-24 20:00
-
-Contribution: 2026-02-26 20:00
-
-Contribution: 2026-03-07 20:00
-
-Contribution: 2026-03-10 20:00
-
-Contribution: 2026-03-12 20:00
-
-Contribution: 2026-03-19 20:00
-
-Contribution: 2026-03-20 20:00
-
-Contribution: 2026-03-21 20:00
-
-Contribution: 2026-03-27 20:00
-
-Contribution: 2026-04-02 20:00
-
-Contribution: 2026-04-03 20:00
-
-Contribution: 2026-04-08 20:00
-
-Contribution: 2026-04-10 20:00
-
-Contribution: 2026-04-22 20:00
-
-Contribution: 2026-04-23 20:00
-
-Contribution: 2026-04-25 20:00
-
-Contribution: 2026-05-03 20:00
-
-Contribution: 2026-05-04 20:00
-
-Contribution: 2026-05-08 20:00
-
-Contribution: 2026-05-09 20:00
-
-Contribution: 2026-05-13 20:00
-
-Contribution: 2026-05-28 20:00
-
-Contribution: 2026-05-30 20:00
-
-Contribution: 2026-06-06 20:00
-
-Contribution: 2026-06-07 20:00
-
-Contribution: 2026-06-12 20:00
-
-Contribution: 2026-06-15 20:00
-
-Contribution: 2026-06-18 20:00
-
-Contribution: 2026-06-20 20:00
-
-Contribution: 2026-06-21 20:00
-
+MIT
