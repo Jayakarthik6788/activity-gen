@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import argparse
 import csv
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Iterable
 
@@ -64,6 +64,34 @@ def read_activities(path: Path = LOG_FILE) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def active_week_summary(rows: Iterable[dict[str, str]]) -> tuple[int, int]:
+    """Return (number of active ISO weeks, longest consecutive-week run)."""
+    weeks = set()
+    for row in rows:
+        try:
+            logged_date = date.fromisoformat(row["date"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        iso = logged_date.isocalendar()
+        weeks.add((iso.year, iso.week))
+
+    if not weeks:
+        return 0, 0
+
+    ordered = sorted(weeks)
+    longest = current = 1
+    previous_monday = date.fromisocalendar(*ordered[0], 1)
+    for year, week in ordered[1:]:
+        monday = date.fromisocalendar(year, week, 1)
+        if monday - previous_monday == timedelta(days=7):
+            current += 1
+        else:
+            current = 1
+        longest = max(longest, current)
+        previous_monday = monday
+    return len(weeks), longest
+
+
 def print_activities(rows: Iterable[dict[str, str]]) -> None:
     rows = list(rows)
     if not rows:
@@ -107,8 +135,11 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "stats":
             rows = read_activities()
             days = sorted({row["date"] for row in rows})
+            active_weeks, longest_streak = active_week_summary(rows)
             print(f"Entries: {len(rows)}")
             print(f"Distinct work days: {len(days)}")
+            print(f"Active ISO weeks: {active_weeks}")
+            print(f"Longest consecutive active-week streak: {longest_streak}")
             if days:
                 print(f"First logged day: {days[0]}")
                 print(f"Latest logged day: {days[-1]}")
